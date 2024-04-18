@@ -12,16 +12,42 @@ import matplotlib.pyplot as plt
 # for a 2-d array we can use multiple indices e.g array[0][1]
 
 # Slice; to get a subset of a array using numPy we can use the array[1:4], which returns subset between 1 and 4
-# for a 2-d array, to slice, array[0:2 3:5], which returns the 2 elements nested in the first two lists
 
 # use [:,2] - if want to perform operation only on second column
+
+
+# print(car_hp_acc_arr[0:2, 3:5]), can be used to access the first two columns and 3-5 rows
+# students_marks += [5,10], adds 5 to first val in each row, and 10 to second value in each row
+
+
+# to put an image as an np matrix
+# import os.path
+# from skimage.io import imread
+# from skimage import data_dir
+# img = imread(os.path.join(data_dir, 'astronaut.png'))
+# print(img) - to print matrix
+# import matplotlib.pyplot as plt
+# plt.imshow(img) - to show picture
+
+# to slice a segment of a picture:
+# use the img_slice, but before that make a copy of the image
+# img_slice = img.copy()
+# img_slice = img_slice[0:300,360:480]
+# plt.figure()
+# plt.imshow(img_slice)
+
+# to make this segment non visible - black
+# img[0:300,360:480,:] = 0
+# img_slice[np.greater_equal(img_slice[:,:,0],100) & np.less_equal(img_slice[:,:,0],150)] = 0
+
+# use below to place segment back in image
+# img[0:300,360:480,:] = img_slice
 
 # for mean use np.mean(Data)
 # for median use np.median(data)
 # for min/max np.min, np.max(data)
 # for the index of the min/max value apply np.argmin/argmax(data)
 # to get vals greater than 120, use np.where(array > 120), which returns the index
-
 
 # a filtered array can be created with elements fulfiling a condition e.g through array = originalArray > 120, then newArray = originalArray[array]
 
