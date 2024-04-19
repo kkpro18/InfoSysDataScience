@@ -1,2 +1,1 @@
-Page 5 / 11
-Operations in Pandas
+Pandas Finished

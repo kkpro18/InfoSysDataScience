@@ -55,3 +55,63 @@ print(marks_df)
 
 marks_df.mask((marks_df < 33),'Fail', inplace = True)
 print(marks_df)
+
+marks_df = pd.DataFrame(marks, index = ['Subodh', 'Ram', 'Abdul', 'John'])
+
+encrypted_marks = np.sin(marks_df) # encrypts all scores using sin()
+print(encrypted_marks)
+
+# as indexes were changed, it can be reset back by df.reset_index(inplace = True)
+encrypted_marks.reset_index(inplace=True)
+print(encrypted_marks) # can be seen the existing index e.g names is added as a column, and default index is set 1,2,3..
+
+new_marks = marks_df + 5 # implmentaion of broadcasting by adding 5 to each mark
+print(new_marks)
+print(marks_df)
+final_mark = marks_df + [5,10,10,2] # adds these marks to the corresponding
+print(final_mark)
+
+# to apply a function along an axis DF.apply(func,axis=0,result_type=None)
+# result_type can be expand, reduce or broadcast
+# broadcast mean it will result the original index and columns
+
+
+#Creating the DataFrame
+marks = {'Chemistry': [67,90,66,32],
+        'Physics': [45,92,72,40],
+        'Mathematics': [50,87,81,12],
+        'English': [19,90,72,68]}
+marks_df = pd.DataFrame(marks, index = ['James', 'Lee', 'Anderson', 'John'])
+
+print(marks_df.apply(np.sum,axis=0)) # axis 0 means rows, axis 1 is columns
+# sum of all rows so each subject
+
+print(marks_df.apply(np.sum,axis=1))
+# sum of marks per student
+
+print(marks_df.apply(np.mean, axis=0, result_type='broadcast'))
+# fills marks with mean of last term...
+
+marks_A = {'Chemistry': [67,90,66,32],
+        'Physics': [45,92,72,40],
+          }
+marks_A_df = pd.DataFrame(marks_A, index = ['Subodh', 'Ram', 'Abdul', 'John'])
+marks_B = {'Chemistry': [72,45,60,98],
+        'Physics': [78,34,72,95],
+          }
+marks_B_df = pd.DataFrame(marks_B, index = ['Nandini', 'Zoya', 'Shivam', 'James'])
+
+# to concat both mark a class and mark b class
+pd.concat([marks_A_df,marks_B_df],sort=False)
+
+# when there is a column mismatch i.e two df with a common column such as users, then some unique ones, merge can be used
+# e.g pd.merge(df1,df2)
+
+df1 = pd.DataFrame({'employee': ['Jyoti', 'Sapna', 'Raj', 'Ramaswamy'],
+                    'group': ['Accounting', 'Engineering', 'Engineering', 'HR']})
+df2 = pd.DataFrame({'employee': ['Jyoti', 'Sapna', 'Raj', 'Ramaswamy'],
+                    'hire_date': [2004, 2008, 2012, 2014]})
+df3 = pd.merge(df1,df2)
+print(df3)
+
+# to get a frequency distribution for a specific column or category crosstab may be used.
