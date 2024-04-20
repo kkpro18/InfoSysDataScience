@@ -1,1 +1,2 @@
-Pandas Finished
+Data Visualisation:
+Types of Plots Page 1
