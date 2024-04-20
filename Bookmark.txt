@@ -1,2 +1,1 @@
-Data Visualisation:
-Types of Plots Page 1
+Scikit-learn Page 0
